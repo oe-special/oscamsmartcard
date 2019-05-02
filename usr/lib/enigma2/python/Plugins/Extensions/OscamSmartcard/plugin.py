@@ -893,11 +893,11 @@ class OscamSmartcard(ConfigListScreen, Screen):
 		system('rm -f /etc/init.d/cardserver')
 		system('ln -s /etc/init.d/cardserver.None /etc/init.d/cardserver')
 		system('chmod 755 /etc/init.d/cardserver')
-		if fileExists ('/etc/rc0.d/K20softcam'):
+		if fileExists ('/etc/rcS.d/*softcam'):
 			os.system('update-rc.d -f softcam remove && update-rc.d -f cardserver remove')
-		if not fileExists('/etc/rc0.d/K09softcam'):
-			os.system('update-rc.d softcam stop 09 0 1 6 . start  60 2 3 4 5 .')
-			os.system('update-rc.d cardserver stop 09 0 1 6 . start  60 2 3 4 5 .')
+		if not fileExists('/etc/rcS.d/*softcam'):
+			os.system('update-rc.d softcam start 95 S .')
+			os.system('update-rc.d cardserver start 90 S .')
 
 	def getIP(self):
 		#return str(popen('ip route get 8.8.8.8 |cut -d " " -f7').read().strip())
