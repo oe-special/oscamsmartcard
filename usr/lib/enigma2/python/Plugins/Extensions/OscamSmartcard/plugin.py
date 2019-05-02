@@ -703,6 +703,7 @@ class OscamSmartcard(ConfigListScreen, Screen):
 			system('rm -f /etc/init.d/cardserver.OscamSmartcard')
 			system('rm -f /etc/init.d/softcam.OscamSmartcard')
 			system('cp -f /tmp/data/softcam.OscamSmartcard /etc/init.d/softcam.OscamSmartcard')
+			system('sed -i /etc/init.d/softcam.OscamSmartcard -e \'s#/etc/tuxbox/config"#' + self.oscamconfigpath + '"#\'')
 			system('cp -f /tmp/data/cardserver.OscamSmartcard /etc/init.d/cardserver.OscamSmartcard')
 			system('chmod 755 /etc/init.d/softcam.OscamSmartcard')
 			system('chmod 755 /etc/init.d/cardserver.OscamSmartcard')
