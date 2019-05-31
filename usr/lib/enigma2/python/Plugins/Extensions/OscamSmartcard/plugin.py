@@ -917,6 +917,6 @@ def main_menu(menuid, **kwargs):
 
 def Plugins(**kwargs):
 	if imagedistro in ("openatv"):
-		return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_MENU, fnc=main_menu))
+		return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_MENU, fnc=main_menu)
 	else:
 		return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
