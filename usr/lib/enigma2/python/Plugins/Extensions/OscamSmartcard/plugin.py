@@ -908,5 +908,15 @@ class OscamSmartcard(ConfigListScreen, Screen):
 
 def main(session, **kwargs):
 	session.open(OscamSmartcard,"/usr/lib/enigma2/python/Plugins/Extensions/OscamSmartcard/images/oscamsmartcard.png")
+
+def main_menu(menuid, **kwargs):
+	if menuid == "cam":
+		return [("Oscam Smartcard v2.4", main, _("Configuration tool for OScam"), 2)]
+	else:
+		return []
+
 def Plugins(**kwargs):
-	return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
+	if imagedistro in ("openatv"):
+		return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_MENU, fnc=main_menu))
+	else:
+		return PluginDescriptor(name="Oscam Smartcard v2.4", description=_("Configuration tool for OScam"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=main)
