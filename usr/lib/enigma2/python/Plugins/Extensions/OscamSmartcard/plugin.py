@@ -143,7 +143,6 @@ class OscamSmartcard(ConfigListScreen, Screen):
   <widget name="HELPTEXT" position="670,518" size="544,110" zPosition="1" font="Regular; 20" halign="left" backgroundColor="black" transparent="1" />
   <widget name="HEADER" position="60,114" size="590,180" zPosition="1" font="Regular; 20" halign="left" backgroundColor="black" transparent="1" />
   <widget name="INFOTXT" position="60,518" size="590,110" zPosition="1" font="Regular; 20" halign="left" backgroundColor="black" transparent="1" />
-  <eLabel text="OscamSmartcard 2.4 by arn354 and Undertaker" position="874,45" size="360,20" zPosition="1" font="Regular; 15" halign="right" backgroundColor="black" transparent="1" />
 <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/OscamSmartcard/images/oscamsmartcard.png" position="958,75" size="275,250" alphatest="blend" zPosition="2" />
 </screen>"""
 
@@ -825,13 +824,15 @@ class OscamSmartcard(ConfigListScreen, Screen):
 								if servername == "IP":
 									servername=server.replace(".","-")
 								servername =  servername+"_"+str(xc)
-								peer = '\n[reader]\nlabel\t\t\t = ' +servername + '\ndescription\t\t = ' + 'CCcam-Server: '+ server + ':' + port + '\nprotocol\t\t = ' + protokoll + '\n' + 'device\t\t\t = '+ server + ',' + port + '\n' +'user\t\t\t = ' + user + '\npassword\t\t = ' + passwd + '\ngroup\t\t\t = 1\ncccversion\t\t = 2.3.0\nccckeepalive\t\t = 1\nccchop\t\t\t = 9\naudisabled\t\t = 1\ndisablecrccws\t\t= 1\ndisablecrccws_only_for\t = 09C4:000000;098C:000000\n'
+								peer = '\n[reader]\nlabel\t\t\t = ' +servername + '\ndescription\t\t = ' + 'CCcam-Server: '+ server + ':' + port + '\nprotocol\t\t = ' + protokoll + '\n' + 'device\t\t\t = '+ server + ',' + port + '\n' +'user\t\t\t = ' + user + '\npassword\t\t = ' + passwd + '\ngroup\t\t\t = 1\ncccversion\t\t = 2.3.0\ndropbadcws\t\t = 1\nccckeepalive\t\t = 1\nccchop\t\t\t = 9\naudisabled\t\t = 1\ndisablecrccws\t\t= 1\ndisablecrccws_only_for\t = 09C4:000000;098C:000000\n'
+
 							if protokoll=='cs357x':
 								yc +=1
 								if servername == "IP":
 									servername=server.replace(".","-")
 								servername = servername+"_"+str(yc)
-								peer = '\n[reader]\nlabel\t\t\t = ' +servername + '\ndescription\t\t = ' + 'Camd35-Server: ' + server + ':' + port + '\nprotocol\t\t = ' + protokoll + '\n' + 'device\t\t\t = '+ server + ',' + port + '\n' +'user\t\t\t = ' + user + '\npassword\t\t = ' + passwd + '\ngroup\t\t\t = 1\naudisabled\t\t = 1\ndisablecrccws\t\t= 1\ndisablecrccws_only_for\t = 09C4:000000;098C:000000\n'
+								peer = '\n[reader]\nlabel\t\t\t = ' +servername + '\ndescription\t\t = ' + 'Camd35-Server: ' + server + ':' + port + '\nprotocol\t\t = ' + protokoll + '\n' + 'device\t\t\t = '+ server + ',' + port + '\n' +'user\t\t\t = ' + user + '\npassword\t\t = ' + passwd + '\ngroup\t\t\t = 1\naudisabled\t\t = 1\n\ndropbadcws\t\t = 1\ndisablecrccws\t\t= 1\ndisablecrccws_only_for\t = 09C4:000000;098C:000000\n'
+
 							cccsrv += peer
 					elif line.startswith(userline):
 						zc=zc+1
@@ -897,6 +898,7 @@ class OscamSmartcard(ConfigListScreen, Screen):
 	def showNews(self):
 		lastinfo =  ""
 		x = " : "
+		lastinfo += "06-11-2020" + x + _("added dropbadcws on cccam import") + "\n"
 		lastinfo += "10-20-2018" + x + _("added bcm arm 64 bit CPU") + "\n"
 		lastinfo += "11-07-2018" + x + _("download fix") + "\n"
 		lastinfo += "18-02-2018" + x + _("added HD03/04 Support") + "\n"
